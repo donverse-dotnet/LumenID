@@ -1,7 +1,6 @@
 name: 🔨 Create task issue
 description: The template for creating a task issue for this project.
 title: "[🔨Task]: "
-labels: ["task"]
 body:
   - type: markdown
     attributes:

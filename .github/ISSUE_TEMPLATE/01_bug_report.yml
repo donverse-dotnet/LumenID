@@ -1,7 +1,6 @@
 name: "🐛 Report bugs"
 description: "The template for reporting bugs for this project."
 title: "[🐛Bug]: "
-labels: ["bug"]
 body:
   - type: markdown
     attributes:
