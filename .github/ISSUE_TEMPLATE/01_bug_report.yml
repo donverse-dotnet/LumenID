@@ -7,6 +7,21 @@ body:
       value: |
         Thanks for taking the time to report a bug! Please provide as much information as you can to help us reproduce and fix the issue.
 
+  - type: dropdown
+    id: bug_severity
+    attributes:
+      label: "🎲Solution"
+      description: "Select the where is the bug occur."
+      options:
+        - label: "API"
+          value: "api"
+        - label: "Web"
+          value: "web"
+        - label: "Docs"
+          value: "docs"
+    validations:
+      required: true
+
   - type: textarea
     id: bug_description
     attributes:

@@ -1,7 +1,5 @@
-# 空白のIssueテンプレートを無効にする
 blank_issues_enabled: false
 
-# コミュニティへの誘導
 contact_links:
   - name: "💬 Community Discussions"
     url: "https://discord.com/invite/gEgjt9mbUU",
@@ -10,12 +8,11 @@ contact_links:
     url: "https://lab.donverse.net/docs/lumenid/",
     about: "Find answers in the documentation."
 
-# Issueテンプレートの設定
 defaults:
-  - template: "bug_report.yml"
+  - template: "01_bug_report.yml"
     name: "🙋‍♂️ Report bugs"
     about: "The template for reporting bugs for this project."
 
-  - template: "feature_request.yml"
+  - template: "02_feature_request.yml"
     name: "💡 Request features"
     about: "The template for requesting new features for this project."
