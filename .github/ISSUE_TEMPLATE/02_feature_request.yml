@@ -1,5 +1,6 @@
 name: 💡 Request features
 description: The template for requesting new features for this project.
+title: "[💡Idea]: "
 labels: ["enhancement"]
 body:
   - type: markdown
