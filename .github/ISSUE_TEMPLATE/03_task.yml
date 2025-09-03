@@ -1,0 +1,27 @@
+name: 🔨 Create task issue
+description: The template for creating a task issue for this project.
+title: "[🔨Task]: "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not use this template to report bugs or request features. Use the appropriate templates for those purposes.
+
+  - type: textarea
+    id: task_description
+    attributes:
+      label: "📝 Task Description"
+      description: "Describe the task you want to create."
+      placeholder: "A clear and concise description of the task."
+    validations:
+      required: true
+
+  - type: textarea
+    id: task_steps
+    attributes:
+      label: "🔧 Task Steps"
+      description: "List the steps required to complete this task."
+      placeholder: "1. Step one\n2. Step two\n3. Step three"
+    validations:
+      required: true
