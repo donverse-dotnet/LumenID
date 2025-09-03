@@ -18,8 +18,8 @@ Visit [here](https://lab.donverse.net/LumenID/docs)!
 1. Go to [here](https://github.com/donverse-dotnet/LumenID/issues/new/choose), then click `Community Discussion`.
 2. Find `Help` category, then find `LumenID` channel, then send your **question**.
 
-    > [!NOTE]
-    > You need [Discord](https://discord.com) to get help.
+> [!NOTE]
+> You need [Discord](https://discord.com) to get help.
 
 ---
 
