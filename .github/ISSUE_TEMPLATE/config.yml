@@ -1,1 +1,9 @@
 blank_issues_enabled: false
+
+contact_links:
+  - name: "💬 Community Discussions"
+    url: "https://discord.com/invite/gEgjt9mbUU",
+    about: "Join the discord community discussions for help and support."
+  - name: "📚 Documentation"
+    url: "https://lab.donverse.net/docs/lumenid/",
+    about: "Find answers in the documentation."
