@@ -1,18 +1,1 @@
 blank_issues_enabled: false
-
-contact_links:
-  - name: "💬 Community Discussions"
-    url: "https://discord.com/invite/gEgjt9mbUU",
-    about: "Join the discord community discussions for help and support."
-  - name: "📚 Documentation"
-    url: "https://lab.donverse.net/docs/lumenid/",
-    about: "Find answers in the documentation."
-
-defaults:
-  - template: "01_bug_report.yml"
-    name: "🙋‍♂️ Report bugs"
-    about: "The template for reporting bugs for this project."
-
-  - template: "02_feature_request.yml"
-    name: "💡 Request features"
-    about: "The template for requesting new features for this project."
