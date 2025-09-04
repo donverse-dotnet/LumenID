@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "oswald-bold";
+    src: url(./assets/Oswald-Bold.ttf) format(truetype);
+}
+
 html,
 body {
     margin: 0;
@@ -15,13 +20,32 @@ body {
     height: 100vh;
 }
 
+.osald-bold {
+    font-family: "oswald-bold";
+}
+
+.no-mevent {
+    pointer-events: none;
+}
+
+.lumenid_logo {
+    max-width: 250px;
+    height: auto;
+
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
 .strong_italic {
     font-weight: 600;
     font-style: italic;
     color: #2563eb;
 }
 
-.svc-tips {
+.tips {
     font-size: 1.2em;
     color: #374151;
     margin-top: 20px;
