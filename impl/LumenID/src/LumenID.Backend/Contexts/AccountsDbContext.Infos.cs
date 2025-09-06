@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace LumenID.Backend.Contexts;
 
 public partial class AccountsDbContext
@@ -24,5 +26,14 @@ public partial class AccountsDbContext
         await SaveChangesAsync();
 
         return this;
+    }
+
+    public async Task<bool> IsEmailExistsAsync(string email)
+    {
+        var result = await Infos
+            .Where(data => data.Email == email)
+            .FirstOrDefaultAsync();
+
+        return result != null; // If exists, return true
     }
 }
