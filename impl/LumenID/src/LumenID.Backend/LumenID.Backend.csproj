@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <Protobuf Include="../.share/Protos/greet.proto" GrpcServices="Server" />
+
+    <Protobuf Include="../.share/Protos/V0/Enums/RegisterStatus.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+
+    <Protobuf Include="../.share/Protos/V0/Types/AuthAccountModel.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+    <Protobuf Include="../.share/Protos/V0/Types/RegisterResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+
+    <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
