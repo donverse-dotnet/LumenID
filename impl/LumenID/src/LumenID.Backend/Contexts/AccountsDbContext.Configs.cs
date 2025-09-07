@@ -4,12 +4,15 @@ public partial class AccountsDbContext
 {
     public Models.Configs CreateNewConfig()
     {
-        return new Models.Configs
+        var new_config = new Models.Configs
         {
             Id = Guid.NewGuid().ToString(),
-            Notify = new Models.NotifyConfig(),
-            Theme = new Models.ThemeConfig()
         };
+
+        new_config.SetNotifyConfig(new Models.NotifyConfig());
+        new_config.SetThemeConfig(new Models.ThemeConfig());
+
+        return new_config;
     }
 
     public async Task<AccountsDbContext> SaveConfigsAsync(Models.Configs new_config)

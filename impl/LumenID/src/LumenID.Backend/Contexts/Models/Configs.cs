@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 
 namespace LumenID.Backend.Contexts.Models;
 
@@ -9,8 +11,31 @@ public class Configs
 {
     [Key]
     public string Id { get; set; } = null!;
-    public NotifyConfig Notify { get; set; } = new NotifyConfig();
-    public ThemeConfig Theme { get; set; } = new ThemeConfig();
+
+    [Column(TypeName = "json")]
+    public string Notify { get; set; } = string.Empty;
+    [Column(TypeName = "json")]
+    public string Theme { get; set; } = string.Empty;
+
+    public NotifyConfig GetNotifyConfig()
+    {
+        var deserialized = JsonSerializer.Deserialize<NotifyConfig>(Notify);
+        return deserialized ?? new NotifyConfig();
+    }
+    public ThemeConfig GetThemeConfig()
+    {
+        var deserialized = JsonSerializer.Deserialize<ThemeConfig>(Theme);
+        return deserialized ?? new ThemeConfig();
+    }
+
+    public void SetNotifyConfig(NotifyConfig config)
+    {
+        Notify = JsonSerializer.Serialize(config);
+    }
+    public void SetThemeConfig(ThemeConfig config)
+    {
+        Theme = JsonSerializer.Serialize(config);
+    }
 }
 
 public class NotifyConfig
