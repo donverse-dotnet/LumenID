@@ -3,11 +3,11 @@ use `accounts`;
 
 -- Infos
 create table if not exists `infos` (
-    `id`        char(36)     not null,
+    `id`        varchar(36)     not null,
     `username`  varchar(255) not null,
     `email`     varchar(255) not null,
-    `avatar_id` char(36)     null,
-    `header_id` char(36)     null,
+    `avatar_id` varchar(36)     null,
+    `header_id` varchar(36)     null,
     `key_color` varchar(7)   not null default '#000000',
 
     primary key (`id`),
@@ -19,23 +19,23 @@ create table if not exists `infos` (
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 -- Configs
 create table if not exists `configs` (
-    `id`         char(36)     not null,
+    `id`         varchar(36)     not null,
     `notify`     json         not null,
     `theme`      json         not null,
     primary key (`id`)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 -- Secrets
 create table if not exists `secrets` (
-    `id`           char(36)     not null,
-    `password`     char(60)     not null,
-    `secret_key`   char(64)     not null,
+    `id`           varchar(36)     not null,
+    `password`     varchar(60)     not null,
+    `secret_key`   varchar(64)     not null,
 
     primary key (`id`)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 -- Sessions
 create table if not exists `sessions` (
-    `id`          char(36)     not null,
-    `meta_id`     char(36)     not null,
+    `id`          varchar(36)     not null,
+    `meta_id`     varchar(36)     not null,
     `token`       text         not null,
     `created_at`  datetime(6)  not null default current_timestamp(6),
     `updated_at`  datetime(6)  not null default current_timestamp(6) on update current_timestamp(6),
@@ -49,10 +49,10 @@ create table if not exists `sessions` (
 
 -- Metadata
 create table if not exists `metadata` (
-    `id`             char(36)     not null,
-    `info_id`        char(36)     not null,
-    `config_id`      char(36)     not null,
-    `secret_id`      char(36)     not null,
+    `id`             varchar(36)     not null,
+    `info_id`        varchar(36)     not null,
+    `config_id`      varchar(36)     not null,
+    `secret_id`      varchar(36)     not null,
     `created_at`     datetime(6)  not null default current_timestamp(6),
     `updated_at`     datetime(6)  not null default current_timestamp(6) on update current_timestamp(6),
     `deactivated_at` datetime(6)  null,
