@@ -8,7 +8,7 @@
             "applicationUrl": "http://localhost:5237",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ACCOUNTS_DB_CONNECTION_STRING": "server=localhost;port=16446;user=example;password=example;database=accounts;"
+                "ACCOUNTS_DB_CONNECTION_STRING": "MYSQL_CONNECTION_STRING_PLACEHOLDER"
             }
         },
         "https": {
