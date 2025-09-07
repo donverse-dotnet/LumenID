@@ -7,14 +7,15 @@ namespace LumenID.Backend.Contexts.Models;
 /// <summary>
 /// Configs model representing user settings
 /// </summary>
+[Table("configs")]
 public class Configs
 {
-    [Key]
+    [Key, Column("id")]
     public string Id { get; set; } = null!;
 
-    [Column(TypeName = "json")]
+    [Column(name: "notify", TypeName = "json")]
     public string Notify { get; set; } = string.Empty;
-    [Column(TypeName = "json")]
+    [Column(name: "theme", TypeName = "json")]
     public string Theme { get; set; } = string.Empty;
 
     public NotifyConfig GetNotifyConfig()
