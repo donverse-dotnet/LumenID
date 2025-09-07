@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+import "V0/Enums/RegisterStatus.proto";
+
+// This message represents the response for a registration request.
+message RegisterResponse {
+    // The status of the registration process.
+    LumenID.Protos.V0.Enums.RegisterStatus status = 1;
+    // An optional message providing additional information about the registration status.
+    string message = 2;
+}

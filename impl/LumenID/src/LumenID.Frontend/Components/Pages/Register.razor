@@ -1,0 +1,39 @@
+@page "/register"
+
+<div class="register_form_wrapper register_form__colors">
+    <div class="company_brand">
+        <img src="https://placehold.jp/250x250.png" alt="Placeholder"
+            class="company_brand__logo disable_image_dragging">
+        <p class="company_brand__name">Sample</p>
+    </div>
+    <div class="form">
+        <div class="form_header">
+            <h2 class="form_header__title">Create Account</h2>
+            <p class="form_header__subtitle">Please fill in the form to create an account.</p>
+        </div>
+        <div class="form_body">
+            <div class="form_body__input">
+                <input type="email" id="email" placeholder="" required @bind-value="_email">
+                <label for="email">Email</label>
+                <p style="display: @(_isEmailInvalid ? "block" : "none");">Please enter a valid email address.</p>
+            </div>
+            <div class="form_body__input">
+                <input type="password" id="password" placeholder="" required @bind-value="_password">
+                <label for="password">Password</label>
+                <p style="display: @(_isPasswordInvalid ? "block" : "none");">Password must be at least 8 characters
+                    long.
+                </p>
+            </div>
+            <div class="form_body__button">
+                <button type="submit" class="form_body__submit"
+                    @onclick="async () => await HandleSubmit()">Register</button>
+                <p class="form_body__status">@_statusMessage</p>
+            </div>
+        </div>
+        <div class="form_footer">
+            <p class="form_footer__text">Already have an account? <a href="/login" class="form_link">Login
+                    here</a></p>
+            <p class="form_footer__text">No thank you? <a href="/" class="form_link">Back to home</a></p>
+        </div>
+    </div>
+</div>

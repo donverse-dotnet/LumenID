@@ -6,4 +6,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Protobuf Include="../.share/Protos/V0/Enums/RegisterStatus.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+
+    <Protobuf Include="../.share/Protos/V0/Types/AuthAccountModel.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+    <Protobuf Include="../.share/Protos/V0/Types/RegisterResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+
+    <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+    <PackageReference Include="Grpc.Reflection" Version="2.71.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.72.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

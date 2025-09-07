@@ -1,0 +1,5 @@
+[mysqld]
+gtid_mode=ON
+enforce_gtid_consistency=ON
+binlog_transaction_dependency_tracking=WRITESET
+server_id=2

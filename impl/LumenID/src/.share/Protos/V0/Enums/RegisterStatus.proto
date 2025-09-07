@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Enums";
+package LumenID.Protos.V0.Enums;
+
+enum RegisterStatus {
+    V0_UNKNOWN = 0;
+    V0_REQUESTED = 1;
+    V0_IN_EMAIL_CONFLICT_CHECK_STARTED = 2;
+    V0_IN_EMAIL_CONFLICT_CHECK_COMPLETED = 3;
+    V0_IN_ACCOUNT_CREATION_STARTED = 4;
+    V0_IN_CREATED_ACCOUNT = 5;
+    V0_COMPLETED = 6;
+}
