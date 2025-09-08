@@ -39,12 +39,12 @@ create table if not exists `sessions` (
     `token`       text         not null,
     `created_at`  datetime(6)  not null default current_timestamp(6),
     `updated_at`  datetime(6)  not null default current_timestamp(6) on update current_timestamp(6),
-    `expired_at`  datetime(6)  not null,
+    `expires_at`  datetime(6)  not null,
 
     primary key (`id`),
 
     index `idx_meta_id` (`meta_id`),
-    index `idx_expired_at` (`expired_at`)
+    index `idx_expires_at` (`expires_at`)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 
 -- Metadata
