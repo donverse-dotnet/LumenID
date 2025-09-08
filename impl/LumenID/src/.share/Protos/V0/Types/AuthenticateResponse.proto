@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+import "google/protobuf/timestamp.proto";
+
+// This message represents the response for an authentication request.
+message AuthenticateResponse {
+    // Added field for session ID
+    string session_id = 1;
+    // The unique identifier of the authenticated user.
+    string user_id = 2;
+    // The authentication token issued to the user.
+    string token = 3;
+    // The expiration time of the authentication token.
+    google.protobuf.Timestamp expires_at = 4;
+}

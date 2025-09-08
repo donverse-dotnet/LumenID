@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Services";
+package LumenID.Protos.V0.Services;
+
+import "V0/Types/AuthAccountModel.proto";
+import "V0/Types/AuthenticateResponse.proto";
+
+service AuthenticateService {
+    // Login a user and return an authentication token
+    rpc Authenticate (LumenID.Protos.V0.Types.AuthAccountModel) returns (LumenID.Protos.V0.Types.AuthenticateResponse);
+
+    // TODO: Add here for unauthenticate (logout)
+}

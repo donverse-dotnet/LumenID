@@ -11,8 +11,10 @@
 
     <Protobuf Include="../.share/Protos/V0/Types/AuthAccountModel.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
     <Protobuf Include="../.share/Protos/V0/Types/RegisterResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+    <Protobuf Include="../.share/Protos/V0/Types/AuthenticateResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
 
     <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Client" />
+    <Protobuf Include="../.share/Protos/V0/Services/Authenticate.proto" ProtoRoot="../.share/Protos" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>
