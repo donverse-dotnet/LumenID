@@ -35,3 +35,6 @@
 - [x]: Login action
 - [x]: Base data generation
 - [x]: Generate session per login button click
+
+# Retest
+> Reason: 1st test is doing on missed branch.
