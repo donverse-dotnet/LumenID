@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 
-namespace LumenID.Backend.Contexts.Models;
+namespace LumenID.Backend.Contexts.Accounts.Models;
 
 /// <summary>
 /// Configs model representing user settings

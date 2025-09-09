@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LumenID.Backend.Contexts;
+namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext {
     public Models.Infos CreateNewInfo(string email)

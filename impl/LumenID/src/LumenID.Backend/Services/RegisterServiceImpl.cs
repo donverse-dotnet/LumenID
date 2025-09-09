@@ -1,5 +1,5 @@
 using Grpc.Core;
-using LumenID.Backend.Contexts;
+using LumenID.Backend.Contexts.Accounts;
 using LumenID.Protos.V0.Enums;
 using LumenID.Protos.V0.Services;
 using LumenID.Protos.V0.Types;

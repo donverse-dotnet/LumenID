@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LumenID.Backend.Contexts;
+namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext(DbContextOptions<AccountsDbContext> options) : DbContext(options) {
     public DbSet<Models.Metadata> Metadata { get; set; }

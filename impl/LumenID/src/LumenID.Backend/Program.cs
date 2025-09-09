@@ -1,4 +1,4 @@
-using LumenID.Backend.Contexts;
+using LumenID.Backend.Contexts.Accounts;
 using LumenID.Backend.Services;
 using Microsoft.EntityFrameworkCore;
 

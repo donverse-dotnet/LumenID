@@ -1,4 +1,4 @@
-namespace LumenID.Backend.Contexts;
+namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext {
     public Models.Sessions CreateNewSession(string meta_id, string token, DateTime tokenCreatedAt, DateTime tokenExpiresAt)

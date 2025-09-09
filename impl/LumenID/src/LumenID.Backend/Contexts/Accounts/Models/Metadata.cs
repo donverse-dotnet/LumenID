@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LumenID.Backend.Contexts.Models;
+namespace LumenID.Backend.Contexts.Accounts.Models;
 
 /// <summary>
 /// Metadata model representing user account metadata

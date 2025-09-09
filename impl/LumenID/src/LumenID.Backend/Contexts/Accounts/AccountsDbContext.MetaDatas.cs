@@ -1,4 +1,4 @@
-namespace LumenID.Backend.Contexts;
+namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext {
     public Models.Metadata CreateNewMetadata(string info_id, string config_id, string secret_id)
