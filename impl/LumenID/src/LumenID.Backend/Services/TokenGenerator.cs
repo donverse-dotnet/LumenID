@@ -5,8 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LumenID.Backend.Services;
 
-public class TokenGenerator
-{
+public class TokenGenerator {
     private const string Issuer = "Donverse.net / LumenID";
     private const string Audience = "LumenID Clients";
     private const int ExpiresInHours = 24;
@@ -18,12 +17,12 @@ public class TokenGenerator
         var securityKey = new SymmetricSecurityKey(secretKeyBytes);
         var credentials = new SigningCredentials(securityKey, Algorithm);
         var token = new JwtSecurityToken(
-            issuer: Issuer,
-            audience: Audience,
-            claims: null,
-            notBefore: issuedAt,
-            expires: issuedAt.AddHours(ExpiresInHours),
-            signingCredentials: credentials
+        issuer: Issuer,
+        audience: Audience,
+        claims: null,
+        notBefore: issuedAt,
+        expires: issuedAt.AddHours(ExpiresInHours),
+        signingCredentials: credentials
         );
         return token;
     }

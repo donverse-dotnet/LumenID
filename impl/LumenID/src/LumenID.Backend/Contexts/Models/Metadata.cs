@@ -7,8 +7,7 @@ namespace LumenID.Backend.Contexts.Models;
 /// Metadata model representing user account metadata
 /// </summary>
 [Table("metadata")]
-public class Metadata
-{
+public class Metadata {
     /// <summary>
     /// Id of metadata (user id) generated as UUID v4
     /// </summary>

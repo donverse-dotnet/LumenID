@@ -7,8 +7,7 @@ namespace LumenID.Backend.Contexts.Models;
 /// Secrets model representing user credentials
 /// </summary>
 [Table("secrets")]
-public class Secrets
-{
+public class Secrets {
     [Key, Column("id")]
     public string Id { get; set; } = null!;
     [Column("password")]

@@ -109,8 +109,8 @@
     padding: 0 4px;
 }
 
-.form_body__input input:focus+label,
-.form_body__input input:not(:placeholder-shown)+label {
+.form_body__input input:focus + label,
+.form_body__input input:not(:placeholder-shown) + label {
     top: -8px;
     left: 8px;
     font-size: 12px;

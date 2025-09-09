@@ -1,7 +1,6 @@
 namespace LumenID.Backend.Contexts;
 
-public partial class AccountsDbContext
-{
+public partial class AccountsDbContext {
     public Models.Secrets CreateNewSecret(string password_hash, string secret_key)
     {
         return new Models.Secrets

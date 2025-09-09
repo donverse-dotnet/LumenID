@@ -7,8 +7,7 @@ namespace LumenID.Backend.Contexts.Models;
 /// Infos model representing user profile information
 /// </summary>
 [Table("infos")]
-public class Infos
-{
+public class Infos {
     /// <summary>
     /// Id of Infos (user profile) generated as UUID v4
     /// </summary>

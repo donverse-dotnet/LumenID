@@ -6,11 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<TokenGenerator>();
-builder.Services.AddSingleton(sp =>
-{
+builder.Services.AddSingleton(sp => {
     var connectionString = Environment.GetEnvironmentVariable("ACCOUNTS_DB_CONNECTION_STRING") ??
                            throw new InvalidOperationException(
-                               "ACCOUNTS_DB_CONNECTION_STRING environment variable is not set.");
+                           "ACCOUNTS_DB_CONNECTION_STRING environment variable is not set.");
 
     var options = new DbContextOptionsBuilder<AccountsDbContext>()
         .UseMySQL(connectionString)
@@ -27,7 +26,7 @@ var app = builder.Build();
 app.MapGrpcService<RegisterServiceImpl>();
 app.MapGrpcService<AuthenticateServiceImpl>();
 app.MapGet("/",
-    () =>
-        "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+() =>
+    "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();

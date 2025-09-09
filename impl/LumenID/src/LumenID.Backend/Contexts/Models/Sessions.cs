@@ -7,8 +7,7 @@ namespace LumenID.Backend.Contexts.Models;
 /// Sessions model representing user sessions
 /// </summary>
 [Table("sessions")]
-public class Sessions
-{
+public class Sessions {
     [Key, Column("id")]
     public string Id { get; set; } = null!;
     [Column("meta_id")]

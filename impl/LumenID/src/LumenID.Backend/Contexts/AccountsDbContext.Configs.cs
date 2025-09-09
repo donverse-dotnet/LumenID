@@ -1,7 +1,6 @@
 namespace LumenID.Backend.Contexts;
 
-public partial class AccountsDbContext
-{
+public partial class AccountsDbContext {
     public Models.Configs CreateNewConfig()
     {
         var new_config = new Models.Configs

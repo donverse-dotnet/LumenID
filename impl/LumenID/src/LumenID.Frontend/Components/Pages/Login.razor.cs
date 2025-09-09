@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace LumenID.Frontend.Components.Pages;
 
-public partial class Login : ComponentBase
-{
-    [Inject] private ILogger<Login> Logger  { get; set; } = null!;
-    
+public partial class Login : ComponentBase {
+    [Inject] private ILogger<Login> Logger { get; set; } = null!;
+
     private string _email = string.Empty;
     private string _password = string.Empty;
     private bool _isEmailInvalid;

@@ -14,8 +14,7 @@ public class AuthenticateServiceImpl(
     [FromServices] TokenGenerator tokenGenerator,
     [FromServices] AccountsDbContext database,
     [FromServices] ILogger<RegisterServiceImpl> logger
-) : AuthenticateService.AuthenticateServiceBase
-{
+) : AuthenticateService.AuthenticateServiceBase {
     public override async Task<AuthenticateResponse> Authenticate(AuthAccountModel request, ServerCallContext context)
     {
         // 1. Find user (verify) with email and password
@@ -25,7 +24,7 @@ public class AuthenticateServiceImpl(
             .Where(item => item.Email == request.Email)
             .FirstOrDefaultAsync();
         if (info is null) throw new RpcException(new Status(StatusCode.NotFound, "Account not found"));
-        
+
         // 1.3 Get metadata using user id and secret id
         var metadata = await database.Metadata
             .Select(item => new { item.Id, item.SecretId, item.InfoId, item.CreatedAt, item.UpdatedAt })
@@ -60,7 +59,7 @@ public class AuthenticateServiceImpl(
         // 3. Return token and user info in AuthenticateResponse
         // 3.1 Create new session data
         var newSession = database.CreateNewSession(metadata.Id, tokenGenerator.WriteToken(token), issuedAt,
-            token.ValidTo);
+        token.ValidTo);
         // 3.2 Create AuthenticateResponse
         var response = new AuthenticateResponse
         {

@@ -10,8 +10,7 @@ namespace LumenID.Backend.Services;
 public class RegisterServiceImpl(
     [FromServices] AccountsDbContext database,
     [FromServices] ILogger<RegisterServiceImpl> logger
-) : RegisterService.RegisterServiceBase
-{
+) : RegisterService.RegisterServiceBase {
     public override async Task Register(AuthAccountModel request, IServerStreamWriter<RegisterResponse> responseStream, ServerCallContext context)
     {
         // First response
