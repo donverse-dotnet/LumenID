@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Services";
+package LumenID.Protos.V0.Services;
+
+import "V0/Types/GrantRequest.proto";
+import "V0/Types/GrantResponse.proto";
+
+// Grant application's access to LumenID accounts.
+service GrantService {
+    // Grant request with Authorize data.
+    rpc Grant(LumenID.Protos.V0.Types.GrantRequest) returns (LumenID.Protos.V0.Types.GrantResponse);
+}

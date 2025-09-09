@@ -1,0 +1,9 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+message GrantRequest {
+    string client_id = 1;
+    string client_public_key = 2;
+}
