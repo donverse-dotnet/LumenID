@@ -11,6 +11,7 @@ public partial class AccountsDbContext
 
         new_config.SetNotifyConfig(new Models.NotifyConfig());
         new_config.SetThemeConfig(new Models.ThemeConfig());
+        new_config.SetGrantedApps(new Models.GrantedApps());
 
         return new_config;
     }
