@@ -54,7 +54,7 @@ public class AuthenticateServiceImpl(
             new Claim(JwtRegisteredClaimNames.Email, info.Email)
         };
         // 2.2 Create token with claims(Sign token with secret key (secret key from 1.2))
-        var token = tokenGenerator.GenerateToken(metadata.Id, secret.SecretKey, claims, issuedAt);
+        var token = tokenGenerator.GenerateToken(secret.SecretKey, claims, issuedAt);
 
         // 3. Return token and user info in AuthenticateResponse
         // 3.1 Create new session data

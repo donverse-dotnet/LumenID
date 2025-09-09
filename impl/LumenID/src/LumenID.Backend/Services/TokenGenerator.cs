@@ -11,7 +11,7 @@ public class TokenGenerator {
     private const int ExpiresInHours = 24;
     private const string Algorithm = SecurityAlgorithms.HmacSha256;
 
-    public JwtSecurityToken GenerateToken(string userId, string secretKey, IEnumerable<Claim> claims, DateTime issuedAt)
+    public JwtSecurityToken GenerateToken(string secretKey, IEnumerable<Claim> claims, DateTime issuedAt)
     {
         var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
         var securityKey = new SymmetricSecurityKey(secretKeyBytes);
@@ -19,7 +19,7 @@ public class TokenGenerator {
         var token = new JwtSecurityToken(
         issuer: Issuer,
         audience: Audience,
-        claims: null,
+        claims: claims,
         notBefore: issuedAt,
         expires: issuedAt.AddHours(ExpiresInHours),
         signingCredentials: credentials
