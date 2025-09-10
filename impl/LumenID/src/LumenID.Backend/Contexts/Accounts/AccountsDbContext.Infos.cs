@@ -35,4 +35,10 @@ public partial class AccountsDbContext {
 
         return result != null; // If exists, return true
     }
+
+    public async Task<Models.Infos?> GetInfoAsync(string primaryKey)
+    {
+        var data = await Infos.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
+        return data;
+    }
 }

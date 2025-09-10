@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext {
@@ -20,5 +22,11 @@ public partial class AccountsDbContext {
         await SaveChangesAsync();
 
         return this;
+    }
+
+    public async Task<Models.Secrets?> GetSecretAsync(string primaryKey)
+    {
+        var data = await Secrets.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
+        return data;
     }
 }
