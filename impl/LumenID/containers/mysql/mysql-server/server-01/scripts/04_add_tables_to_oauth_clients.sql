@@ -39,9 +39,7 @@ create table if not exists `codes` (
     `code`    varchar(255)  not null,
     `user_id` varchar(36)   not null,
     `app_id`  varchar(36)   not null,
-    `used`    bool          default false,
-    
-    foreign key (`app_id`) references `metadata` (`id`) on delete cascade on update cascade
+    `used`    bool          default false
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 
 -- Load data
