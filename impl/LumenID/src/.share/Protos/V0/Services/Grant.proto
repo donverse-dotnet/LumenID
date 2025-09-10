@@ -9,5 +9,5 @@ import "V0/Types/GrantResponse.proto";
 // Grant application's access to LumenID accounts.
 service GrantService {
     // Grant request with Authorize data.
-    rpc Grant(LumenID.Protos.V0.Types.GrantRequest) returns (LumenID.Protos.V0.Types.GrantResponse);
+    rpc GrantApp(LumenID.Protos.V0.Types.GrantRequest) returns (LumenID.Protos.V0.Types.GrantResponse);
 }
