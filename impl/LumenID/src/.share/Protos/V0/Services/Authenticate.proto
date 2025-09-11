@@ -9,6 +9,8 @@ import "V0/Types/GetTokenRequest.proto";
 import "google/protobuf/empty.proto";
 
 service AuthenticateService {
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+    
     // Login a user and return an authentication token
     rpc Authenticate (LumenID.Protos.V0.Types.AuthAccountModel) returns (LumenID.Protos.V0.Types.AuthenticateResponse);
     // Logout a user using context
