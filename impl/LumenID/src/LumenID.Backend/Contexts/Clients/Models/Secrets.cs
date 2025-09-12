@@ -12,25 +12,6 @@ public class Secrets {
     public string Id { get; set; } = string.Empty;
     
     /// <summary>
-    /// The public key for OAuth client.
-    /// <para>
-    /// Generate:
-    /// uuid -- SHA256 -- Base64Url --> public key
-    /// </para>
-    /// </summary>
-    [Required, Column("public_key")]
-    public string PublicKey { get; set; } = string.Empty;
-    /// <summary>
-    /// The password for OAuth client.
-    /// <para>
-    /// Generate:
-    /// public key -- HMAC with secret key --> public value
-    /// </para>
-    /// </summary>
-    [Required, Column("public_value")]
-    public string PublicValue { get; set; } = string.Empty;
-    
-    /// <summary>
     /// The secret key for OAuth client.
     /// <para>
     /// Generate:

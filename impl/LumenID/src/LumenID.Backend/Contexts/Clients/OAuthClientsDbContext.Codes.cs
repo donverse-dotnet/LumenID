@@ -3,11 +3,11 @@
 namespace LumenID.Backend.Contexts.Clients;
 
 public partial class OAuthClientsDbContext {
-    public Models.Codes CreateNewCode(string code, string userId, string appId)
+    public Models.Codes CreateNewCode(string baseUuid, string code, string userId, string appId)
     {
         var newData = new Models.Codes()
         {
-            Id = Guid.NewGuid().ToString(),
+            Id = baseUuid,
             Code = code,
             UserId = userId,
             AppId = appId,
