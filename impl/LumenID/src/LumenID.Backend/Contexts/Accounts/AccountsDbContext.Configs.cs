@@ -28,6 +28,17 @@ public partial class AccountsDbContext {
         return this;
     }
 
+    public async Task<AccountsDbContext> UpdateConfigsAsync(Models.Configs new_config)
+    {
+        // Update DbSet
+        Configs.Update(new_config);
+        
+        // Save change
+        await SaveChangesAsync();
+        
+        return this;
+    }
+
     public async Task<Models.Configs?> GetConfigAsync(string primaryKey)
     {
         var data = await Configs.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
