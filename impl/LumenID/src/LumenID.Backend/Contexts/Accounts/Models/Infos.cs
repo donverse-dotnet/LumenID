@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LumenID.Backend.Contexts.Models;
+namespace LumenID.Backend.Contexts.Accounts.Models;
 
 /// <summary>
 /// Infos model representing user profile information
 /// </summary>
 [Table("infos")]
-public class Infos
-{
+public class Infos {
     /// <summary>
     /// Id of Infos (user profile) generated as UUID v4
     /// </summary>

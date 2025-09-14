@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LumenID.Backend.Contexts.Models;
+namespace LumenID.Backend.Contexts.Accounts.Models;
 
 /// <summary>
 /// Metadata model representing user account metadata
 /// </summary>
 [Table("metadata")]
-public class Metadata
-{
+public class Metadata {
     /// <summary>
     /// Id of metadata (user id) generated as UUID v4
     /// </summary>

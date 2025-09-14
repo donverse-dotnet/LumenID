@@ -1,7 +1,8 @@
-namespace LumenID.Backend.Contexts;
+using Microsoft.EntityFrameworkCore;
 
-public partial class AccountsDbContext
-{
+namespace LumenID.Backend.Contexts.Accounts;
+
+public partial class AccountsDbContext {
     public Models.Metadata CreateNewMetadata(string info_id, string config_id, string secret_id)
     {
         return new Models.Metadata
@@ -25,5 +26,11 @@ public partial class AccountsDbContext
         await SaveChangesAsync();
 
         return this;
+    }
+
+    public async Task<Models.Metadata?> GetMetadataAsync(string primaryKey)
+    {
+        var data = await Metadata.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
+        return data;
     }
 }

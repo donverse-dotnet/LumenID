@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LumenID.Backend.Contexts.Models;
+namespace LumenID.Backend.Contexts.Accounts.Models;
 
 /// <summary>
 /// Sessions model representing user sessions
 /// </summary>
 [Table("sessions")]
-public class Sessions
-{
+public class Sessions {
     [Key, Column("id")]
     public string Id { get; set; } = null!;
     [Column("meta_id")]

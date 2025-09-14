@@ -3,13 +3,15 @@ using System.Text;
 using LumenID.Protos.V0.Services;
 using LumenID.Protos.V0.Types;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace LumenID.Frontend.Components.Pages;
 
-public partial class Login : ComponentBase
-{
-    [Inject] private ILogger<Login> Logger  { get; set; } = null!;
-    
+public partial class Login : ComponentBase {
+    [Inject] private ILogger<Login> Logger { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
+
     private string _email = string.Empty;
     private string _password = string.Empty;
     private bool _isEmailInvalid;
@@ -57,7 +59,13 @@ public partial class Login : ComponentBase
         try
         {
             var response = await _authenticateServiceClient.AuthenticateAsync(request);
-            Logger.LogInformation("Login success for {uid} with {token} by {sid}", response.UserId, response.Token, response.SessionId);
+            
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "token", response.Token);
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "user-id", response.UserId);
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "session-id", response.SessionId);
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "expires-at", response.ExpiresAt.ToString());
+            
+            NavigationManager.NavigateTo("/grant");
         }
         catch (Exception e)
         {

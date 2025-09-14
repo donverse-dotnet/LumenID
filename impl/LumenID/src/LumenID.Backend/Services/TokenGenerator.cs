@@ -5,25 +5,24 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LumenID.Backend.Services;
 
-public class TokenGenerator
-{
+public class TokenGenerator {
     private const string Issuer = "Donverse.net / LumenID";
     private const string Audience = "LumenID Clients";
     private const int ExpiresInHours = 24;
     private const string Algorithm = SecurityAlgorithms.HmacSha256;
 
-    public JwtSecurityToken GenerateToken(string userId, string secretKey, IEnumerable<Claim> claims, DateTime issuedAt)
+    public JwtSecurityToken GenerateToken(string secretKey, IEnumerable<Claim> claims, DateTime issuedAt)
     {
         var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
         var securityKey = new SymmetricSecurityKey(secretKeyBytes);
         var credentials = new SigningCredentials(securityKey, Algorithm);
         var token = new JwtSecurityToken(
-            issuer: Issuer,
-            audience: Audience,
-            claims: null,
-            notBefore: issuedAt,
-            expires: issuedAt.AddHours(ExpiresInHours),
-            signingCredentials: credentials
+        issuer: Issuer,
+        audience: Audience,
+        claims: claims,
+        notBefore: issuedAt,
+        expires: issuedAt.AddHours(ExpiresInHours),
+        signingCredentials: credentials
         );
         return token;
     }

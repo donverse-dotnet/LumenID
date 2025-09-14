@@ -1,7 +1,8 @@
-namespace LumenID.Backend.Contexts;
+using Microsoft.EntityFrameworkCore;
 
-public partial class AccountsDbContext
-{
+namespace LumenID.Backend.Contexts.Accounts;
+
+public partial class AccountsDbContext {
     public Models.Sessions CreateNewSession(string meta_id, string token, DateTime tokenCreatedAt, DateTime tokenExpiresAt)
     {
         return new Models.Sessions
@@ -24,5 +25,11 @@ public partial class AccountsDbContext
         await SaveChangesAsync();
 
         return this;
+    }
+
+    public async Task<Models.Sessions?> GetSessionAsync(string primaryKey)
+    {
+        var data = await Sessions.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
+        return data;
     }
 }

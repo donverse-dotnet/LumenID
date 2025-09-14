@@ -1,26 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Protobuf Include="../.share/Protos/V0/Enums/RegisterStatus.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+    <ItemGroup>
+        <Protobuf Include="../.share/Protos/V0/Enums/RegisterStatus.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
 
-    <Protobuf Include="../.share/Protos/V0/Types/AuthAccountModel.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
-    <Protobuf Include="../.share/Protos/V0/Types/RegisterResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
-    <Protobuf Include="../.share/Protos/V0/Types/AuthenticateResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None" />
+        <Protobuf Include="../.share/Protos/V0/Types/AuthAccountModel.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/RegisterResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/AuthenticateResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/GrantRequest.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/GrantResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/GetTokenRequest.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
 
-    <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Server" />
-    <Protobuf Include="../.share/Protos/V0/Services/Authenticate.proto" ProtoRoot="../.share/Protos" GrpcServices="Server" />
-  </ItemGroup>
+        <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Server"/>
+        <Protobuf Include="../.share/Protos/V0/Services/Authenticate.proto" ProtoRoot="../.share/Protos" GrpcServices="Server"/>
+        <Protobuf Include="../.share/Protos/V0/Services/Grant.proto" ProtoRoot="../.share/Protos" GrpcServices="Server"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.64.0" />
-    <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.6+MySQL9.4.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.64.0"/>
+        <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.6+MySQL9.4.0"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0"/>
+    </ItemGroup>
 
 </Project>

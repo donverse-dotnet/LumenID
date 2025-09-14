@@ -1,5 +1,5 @@
 using Grpc.Core;
-using LumenID.Backend.Contexts;
+using LumenID.Backend.Contexts.Accounts;
 using LumenID.Protos.V0.Enums;
 using LumenID.Protos.V0.Services;
 using LumenID.Protos.V0.Types;
@@ -10,8 +10,7 @@ namespace LumenID.Backend.Services;
 public class RegisterServiceImpl(
     [FromServices] AccountsDbContext database,
     [FromServices] ILogger<RegisterServiceImpl> logger
-) : RegisterService.RegisterServiceBase
-{
+) : RegisterService.RegisterServiceBase {
     public override async Task Register(AuthAccountModel request, IServerStreamWriter<RegisterResponse> responseStream, ServerCallContext context)
     {
         // First response

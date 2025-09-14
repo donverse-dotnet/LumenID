@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace LumenID.Frontend.Components.Pages;
 
-public partial class Register : ComponentBase
-{
+public partial class Register : ComponentBase {
     [Inject]
     private ILogger<Register> _logger { get; set; } = null!;
     [Inject]
