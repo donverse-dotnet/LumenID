@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+// This message represents a request to unauthenticate a user session.
+message UnAuthenticateRequest {
+    string session_id = 1;
+}
