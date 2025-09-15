@@ -5,7 +5,7 @@
     <div class="grant_form_wrapper grant_form__colors">
         <div class="company_brand">
             <img src="https://placehold.jp/250x250.png" alt="Placeholder"
-                 class="company_brand__logo disable_image_dragging">
+                class="company_brand__logo disable_image_dragging">
             <p class="company_brand__name">{APP_NAME}</p>
         </div>
         <div class="form">
@@ -23,7 +23,8 @@
                     <p class="note">You can remove permissions for this app at anytime.</p>
                 </div>
                 <div class="form_body__button">
-                    <button type="submit" class="form_body__submit" @onclick="async () => await OnGrantButtonClick()" disabled="@(_grantStatus != HandleGrantStatus.READY)">
+                    <button type="submit" class="form_body__submit" @onclick="async () => await OnGrantButtonClick()"
+                        disabled="@(_grantStatus != HandleGrantStatus.READY)">
                         @switch (_grantStatus)
                         {
                             case HandleGrantStatus.READY:

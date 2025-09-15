@@ -38,6 +38,7 @@
 .register_page_contents_status__provider {
     /*color: #0dcaf0;*/
 }
+
 .register_page_contents_status__connection {
     display: flex;
     flex-direction: row;
@@ -159,8 +160,8 @@
     padding: 0 4px;
 }
 
-.form_body__input input:focus + label,
-.form_body__input input:not(:placeholder-shown) + label {
+.form_body__input input:focus+label,
+.form_body__input input:not(:placeholder-shown)+label {
     top: -8px;
     left: 8px;
     font-size: 12px;

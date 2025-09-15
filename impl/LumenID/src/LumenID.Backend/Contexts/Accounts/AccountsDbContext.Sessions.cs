@@ -3,33 +3,29 @@ using Microsoft.EntityFrameworkCore;
 namespace LumenID.Backend.Contexts.Accounts;
 
 public partial class AccountsDbContext {
-    public Models.Sessions CreateNewSession(string meta_id, string token, DateTime tokenCreatedAt, DateTime tokenExpiresAt)
-    {
-        return new Models.Sessions
-        {
-            Id = Guid.NewGuid().ToString(),
-            MetaId = meta_id,
-            Token = token,
-            CreatedAt = tokenCreatedAt,
-            UpdatedAt = tokenCreatedAt,
-            ExpiresAt = tokenExpiresAt
-        };
-    }
+  public Models.Sessions CreateNewSession(string meta_id, string token, DateTime tokenCreatedAt, DateTime tokenExpiresAt) {
+    return new Models.Sessions {
+      Id = Guid.NewGuid().ToString(),
+      MetaId = meta_id,
+      Token = token,
+      CreatedAt = tokenCreatedAt,
+      UpdatedAt = tokenCreatedAt,
+      ExpiresAt = tokenExpiresAt
+    };
+  }
 
-    public async Task<AccountsDbContext> SaveSessionsAsync(Models.Sessions new_session)
-    {
-        // Add to DbSet
-        await Sessions.AddAsync(new_session);
+  public async Task<AccountsDbContext> SaveSessionsAsync(Models.Sessions new_session) {
+    // Add to DbSet
+    await Sessions.AddAsync(new_session);
 
-        // Save changes to database
-        await SaveChangesAsync();
+    // Save changes to database
+    await SaveChangesAsync();
 
-        return this;
-    }
+    return this;
+  }
 
-    public async Task<Models.Sessions?> GetSessionAsync(string primaryKey)
-    {
-        var data = await Sessions.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
-        return data;
-    }
+  public async Task<Models.Sessions?> GetSessionAsync(string primaryKey) {
+    var data = await Sessions.Where(item => item.Id == primaryKey).FirstOrDefaultAsync();
+    return data;
+  }
 }
