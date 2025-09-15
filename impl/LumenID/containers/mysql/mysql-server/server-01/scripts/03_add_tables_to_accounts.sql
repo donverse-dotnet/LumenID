@@ -4,11 +4,11 @@ use `accounts`;
 -- Infos
 create table if not exists `infos` (
     `id`        varchar(36)     not null,
-    `username`  varchar(255) not null,
-    `email`     varchar(255) not null,
+    `username`  varchar(255)    not null,
+    `email`     varchar(255)    not null,
     `avatar_id` varchar(36)     null,
     `header_id` varchar(36)     null,
-    `key_color` varchar(7)   not null default '#000000',
+    `key_color` varchar(7)      not null default '#000000',
 
     primary key (`id`),
     unique key `uk_username` (`username`),
@@ -19,9 +19,10 @@ create table if not exists `infos` (
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 -- Configs
 create table if not exists `configs` (
-    `id`         varchar(36)     not null,
-    `notify`     json         not null,
-    `theme`      json         not null,
+    `id`           varchar(36)     not null,
+    `notify`       json            not null,
+    `theme`        json            not null,
+    `granted_apps` json            not null,
     primary key (`id`)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_general_ci;
 -- Secrets
@@ -36,10 +37,10 @@ create table if not exists `secrets` (
 create table if not exists `sessions` (
     `id`          varchar(36)     not null,
     `meta_id`     varchar(36)     not null,
-    `token`       text         not null,
-    `created_at`  datetime(6)  not null default current_timestamp(6),
-    `updated_at`  datetime(6)  not null default current_timestamp(6) on update current_timestamp(6),
-    `expires_at`  datetime(6)  not null,
+    `token`       text            not null,
+    `created_at`  datetime(6)     not null default current_timestamp(6),
+    `updated_at`  datetime(6)     not null default current_timestamp(6) on update current_timestamp(6),
+    `expires_at`  datetime(6)     not null,
 
     primary key (`id`),
 
@@ -53,9 +54,9 @@ create table if not exists `metadata` (
     `info_id`        varchar(36)     not null,
     `config_id`      varchar(36)     not null,
     `secret_id`      varchar(36)     not null,
-    `created_at`     datetime(6)  not null default current_timestamp(6),
-    `updated_at`     datetime(6)  not null default current_timestamp(6) on update current_timestamp(6),
-    `deactivated_at` datetime(6)  null,
+    `created_at`     datetime(6)     not null default current_timestamp(6),
+    `updated_at`     datetime(6)     not null default current_timestamp(6) on update current_timestamp(6),
+    `deactivated_at` datetime(6)     null,
 
     primary key (`id`),
 

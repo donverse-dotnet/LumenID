@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+message GrantResponse {
+    string code = 1;
+}

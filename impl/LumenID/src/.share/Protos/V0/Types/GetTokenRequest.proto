@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+message GetTokenRequest {
+    string code = 1;
+    string user_id = 2;
+    string app_id = 3;
+}

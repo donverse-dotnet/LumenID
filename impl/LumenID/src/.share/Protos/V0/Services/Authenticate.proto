@@ -5,10 +5,17 @@ package LumenID.Protos.V0.Services;
 
 import "V0/Types/AuthAccountModel.proto";
 import "V0/Types/AuthenticateResponse.proto";
+import "V0/Types/GetTokenRequest.proto";
+import "V0/Types/UnAuthenticateRequest.proto";
+import "google/protobuf/empty.proto";
 
 service AuthenticateService {
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+
     // Login a user and return an authentication token
     rpc Authenticate (LumenID.Protos.V0.Types.AuthAccountModel) returns (LumenID.Protos.V0.Types.AuthenticateResponse);
-
-    // TODO: Add here for unauthenticate (logout)
+    // Logout a user using context
+    rpc UnAuthenticate (LumenID.Protos.V0.Types.UnAuthenticateRequest) returns (google.protobuf.Empty);
+    // Get a session info for user
+    rpc GetToken(LumenID.Protos.V0.Types.GetTokenRequest) returns (LumenID.Protos.V0.Types.AuthenticateResponse);
 }
