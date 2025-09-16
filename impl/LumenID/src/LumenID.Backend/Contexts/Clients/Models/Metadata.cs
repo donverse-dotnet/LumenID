@@ -6,7 +6,7 @@ namespace LumenID.Backend.Contexts.Clients.Models;
 [Table("metadata")]
 public class Metadata {
   [Column("id"), Key]
-  public string Id { get; set; }
+  public string Id { get; set; } = string.Empty;
   [Column("secret_id"), Required]
   public string SecretId { get; set; } = string.Empty;
   [Column("profile_id"), Required]

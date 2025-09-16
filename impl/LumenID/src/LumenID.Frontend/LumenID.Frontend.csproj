@@ -15,6 +15,7 @@
         <Protobuf Include="../.share/Protos/V0/Types/GrantRequest.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
         <Protobuf Include="../.share/Protos/V0/Types/GrantResponse.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
         <Protobuf Include="../.share/Protos/V0/Types/GetTokenRequest.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
+        <Protobuf Include="../.share/Protos/V0/Types/UnAuthenticateRequest.proto" ProtoRoot="../.share/Protos" GrpcServices="None"/>
 
         <Protobuf Include="../.share/Protos/V0/Services/Register.proto" ProtoRoot="../.share/Protos" GrpcServices="Client"/>
         <Protobuf Include="../.share/Protos/V0/Services/Authenticate.proto" ProtoRoot="../.share/Protos" GrpcServices="Client"/>

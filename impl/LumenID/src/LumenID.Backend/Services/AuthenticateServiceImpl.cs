@@ -10,6 +10,7 @@ using LumenID.Backend.Contexts.Clients;
 using LumenID.Protos.V0.Services;
 using LumenID.Protos.V0.Types;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,8 @@ public class AuthenticateServiceImpl(
     [FromServices] OAuthClientsDbContext clients,
     [FromServices] ILogger<RegisterServiceImpl> logger
 ) : AuthenticateService.AuthenticateServiceBase {
+
+  // TODO: Rename to Login
   public override async Task<AuthenticateResponse> Authenticate(AuthAccountModel request, ServerCallContext context) {
     // 1. Find user (verify) with email and password
     // 1.1 Get info using email
@@ -55,9 +58,9 @@ public class AuthenticateServiceImpl(
     var issuedAt = DateTime.UtcNow;
     var claims = new List<Claim>
     {
-            new Claim(JwtRegisteredClaimNames.Sub, metadata.Id),
-            new Claim(JwtRegisteredClaimNames.Email, info.Email)
-        };
+      new Claim(JwtRegisteredClaimNames.Sub, metadata.Id),
+      new Claim(JwtRegisteredClaimNames.Email, info.Email)
+    };
     // 2.2 Create token with claims(Sign token with secret key (secret key from 1.2))
     var token = tokenGenerator.GenerateToken(secret.SecretKey, claims, issuedAt);
 
@@ -76,6 +79,34 @@ public class AuthenticateServiceImpl(
     await accounts.SaveSessionsAsync(newSession);
     // 3.4 Return response
     return response;
+  }
+
+  [Authorize(Policy = "users")]
+  // TODO: Rename to Logout
+  public override async Task<Empty> UnAuthenticate(UnAuthenticateRequest request, ServerCallContext context) {
+    // 1. Get user id from context
+    var userId = context.GetHttpContext()?.User.Claims
+        .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+    if (userId is null) throw new RpcException(new Status(StatusCode.Unauthenticated, "User ID not found"));
+    // 2. Remove session from database
+    var session = await accounts.Sessions
+        .Where(item => item.Id == request.SessionId && item.MetaId == userId)
+        .FirstOrDefaultAsync();
+    if (session is not null) {
+      try {
+        accounts.Sessions.Remove(session);
+        await accounts.SaveChangesAsync();
+      } catch (Exception ex) {
+        logger.LogError(ex, "Failed to remove session ID {SessionId} from database", request.SessionId);
+        throw new RpcException(new Status(StatusCode.Internal, "Failed to remove session"));
+      }
+      logger.LogInformation("Session ID {SessionId} removed from database", request.SessionId);
+    } else {
+      logger.LogWarning("Session ID {SessionId} not found in database", request.SessionId);
+      throw new RpcException(new Status(StatusCode.NotFound, "Session not found"));
+    }
+    // 3. Return empty
+    return new Empty();
   }
 
   public override async Task<AuthenticateResponse> GetToken(GetTokenRequest request, ServerCallContext context) {
@@ -149,4 +180,7 @@ public class AuthenticateServiceImpl(
     // 3.4 Return response
     return response;
   }
+
+  // TODO: Renew token
+  // TODO: Revoke token
 }

@@ -59,15 +59,20 @@ public class UsersAuthenticationHandler(
       return AuthenticateResult.Fail(TokenNotFoundMessage);
     }
 
+    if (token.ToString() is null || userId.ToString() is null || sessionId.ToString() is null) {
+      logger.LogWarning("{Request} is not include token or user id.", Request.HttpContext.Connection.Id);
+      return AuthenticateResult.Fail(TokenNotFoundMessage);
+    }
+
     // Get user secret
-    var userMetadata = await accounts.GetMetadataAsync(userId);
+    var userMetadata = await accounts.GetMetadataAsync(userId.ToString());
     if (userMetadata is null) return AuthenticateResult.Fail(UserNotFoundMessage);
 
     var userSecret = await accounts.GetSecretAsync(userMetadata.SecretId);
     if (userSecret is null) return AuthenticateResult.Fail(UserNotFoundMessage);
 
     // Validate token
-    var validatedToken = tokens.ValidateToken(token, userSecret.SecretKey, out var jwt);
+    var validatedToken = tokens.ValidateToken(token.ToString(), userSecret.SecretKey, out var jwt);
     if (validatedToken is false) return AuthenticateResult.Fail(SessionExpiredMessage);
     if (jwt is null) return AuthenticateResult.Fail(InvalidTokenMessage);
 
@@ -77,7 +82,7 @@ public class UsersAuthenticationHandler(
     var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
     var uid = jwt.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
-    logger.LogInformation("Handled authentication for {id} : {path} (from {ip} with {uid}", Request.HttpContext.Connection.Id, Request.Path, Request.HttpContext.Connection.RemoteIpAddress, uid);
+    logger.LogInformation("Handled authentication for {id} : {path} (from {ip} with {uid})", Request.HttpContext.Connection.Id, Request.Path, Request.HttpContext.Connection.RemoteIpAddress, uid);
 
     // Return authenticate result
     return AuthenticateResult.Success(ticket);
