@@ -1,0 +1,97 @@
+# TODO: Add env file and use it to store environment variables.
+
+services:
+  # Server
+  mysql-server-01: # Primary
+    build: ./mysql-server/server-01
+    container_name: mysql-server-01
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+    volumes:
+      - ./mysql-server/init.d/01_grant.sql:/docker-entrypoint-initdb.d/01_grant.sql
+      - ./mysql-server/server-01/scripts:/docker-entrypoint-initdb.d
+    restart: always
+  mysql-server-02: # Secondary
+    build: ./mysql-server/server-02
+    container_name: mysql-server-02
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+    volumes:
+      - ./mysql-server/init.d:/docker-entrypoint-initdb.d
+    restart: always
+  mysql-server-03: # Secondary
+    build: ./mysql-server/server-03
+    container_name: mysql-server-03
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+    volumes:
+      - ./mysql-server/init.d:/docker-entrypoint-initdb.d
+    restart: always
+
+  # Shell
+  mysql-shell:
+    build:
+      context: ./mysql-shell
+      dockerfile: Dockerfile
+    container_name: mysql-shell
+    depends_on:
+      - mysql-server-01
+      - mysql-server-02
+      - mysql-server-03
+    environment:
+      - MYSQL_SERVERS=mysql-server-01,mysql-server-02,mysql-server-03
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+
+  # Router
+  mysql-router-01:
+    build: ./mysql-router
+    container_name: mysql-router-01
+    depends_on:
+      - mysql-server-01
+      - mysql-server-02
+      - mysql-server-03
+    environment:
+      - MYSQL_ROUTER_HOST=mysql-server-01
+      - MYSQL_ROUTER_PORT=3306
+      - MYSQL_ROUTER_USER=example
+      - MYSQL_ROUTER_PASSWORD=example
+    ports:
+      - 16446:6446
+      - 16447:6447
+  mysql-router-02:
+    build: ./mysql-router
+    container_name: mysql-router-02
+    depends_on:
+      - mysql-server-01
+      - mysql-server-02
+      - mysql-server-03
+    environment:
+      - MYSQL_ROUTER_HOST=mysql-server-01
+      - MYSQL_ROUTER_PORT=3306
+      - MYSQL_ROUTER_USER=example
+      - MYSQL_ROUTER_PASSWORD=example
+    ports:
+      - 26446:6446
+      - 26447:6447
+  mysql-router-03:
+    build: ./mysql-router
+    container_name: mysql-router-03
+    depends_on:
+      - mysql-server-01
+      - mysql-server-02
+      - mysql-server-03
+    environment:
+      - MYSQL_ROUTER_HOST=mysql-server-01
+      - MYSQL_ROUTER_PORT=3306
+      - MYSQL_ROUTER_USER=example
+      - MYSQL_ROUTER_PASSWORD=example
+    ports:
+      - 36446:6446
+      - 36447:6447

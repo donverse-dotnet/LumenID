@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Types";
+package LumenID.Protos.V0.Types;
+
+// This model is used for authentication purposes.
+message AuthAccountModel {
+    // The email of the account.
+    string email = 1;
+    // The password of the account.
+    string password = 2;
+}

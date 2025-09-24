@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Services";
+package LumenID.Protos.V0.Services;
+
+import "V0/Types/AuthAccountModel.proto";
+import "V0/Types/RegisterResponse.proto";
+import "google/protobuf/empty.proto";
+
+service RegisterService {
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+    
+    // Registers a new user account.
+    rpc Register (LumenID.Protos.V0.Types.AuthAccountModel) returns (stream LumenID.Protos.V0.Types.RegisterResponse);
+}

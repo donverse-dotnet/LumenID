@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LumenID.Protos.V0.Services";
+package LumenID.Protos.V0.Services;
+
+import "V0/Types/GrantRequest.proto";
+import "V0/Types/GrantResponse.proto";
+import "google/protobuf/empty.proto";
+
+// Grant application's access to LumenID accounts.
+service GrantService {
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+    
+    // Grant request with Authorize data.
+    rpc GrantApp(LumenID.Protos.V0.Types.GrantRequest) returns (LumenID.Protos.V0.Types.GrantResponse);
+}
