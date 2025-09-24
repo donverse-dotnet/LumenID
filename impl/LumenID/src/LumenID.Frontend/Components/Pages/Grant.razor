@@ -1,0 +1,62 @@
+﻿@page "/grant"
+@layout Layout.AccountActionsLayout
+
+<div class="grant_page_contents">
+    <div class="grant_form_wrapper grant_form__colors">
+        <div class="company_brand">
+            <img src="https://placehold.jp/250x250.png" alt="Placeholder"
+                class="company_brand__logo disable_image_dragging">
+            <p class="company_brand__name">{APP_NAME}</p>
+        </div>
+        <div class="form">
+            @*TODO: Add get grant app info*@
+            <div class="form_body">
+                <div class="form_body__app_info">
+                    <div class="note" style="color: red">
+                        All apps can get your below data currently.
+                    </div>
+                    <ul class="form_body__app_info__list">
+                        <li>Username</li>
+                        <li>Email</li>
+                        <li>Profile Images Id</li>
+                    </ul>
+                    <p class="note">You can remove permissions for this app at anytime.</p>
+                </div>
+                <div class="form_body__button">
+                    <button type="submit" class="form_body__submit" @onclick="async () => await OnGrantButtonClick()"
+                        disabled="@(_grantStatus != HandleGrantStatus.READY)">
+                        @switch (_grantStatus)
+                        {
+                            case HandleGrantStatus.READY:
+                                <p>Grant</p>
+                                break;
+                            case HandleGrantStatus.SENDING:
+                                <p>Sending...</p>
+                                break;
+                            case HandleGrantStatus.REDIRECTING:
+                                <p>Redirecting...</p>
+                                break;
+                            case HandleGrantStatus.ERROR:
+                                <p>Error!</p>
+                                break;
+                            case HandleGrantStatus.NONE:
+                            default:
+                                <p>Not ready</p>
+                                break;
+                        }
+                    </button>
+                    <p class="form_body__status"></p>
+                </div>
+            </div>
+            <div class="form_footer">
+                <p class="note">No thank you? <a href="/" class="form_link">Back to home</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="grant_page_contents_status">
+        <div class="grant_page_contents_status__provider">Donverse.net</div>
+        <div class="grant_page_contents_status__connection">Connectivity:
+            <div><span>@_firstResponseSpeed</span>ms</div>
+        </div>
+    </div>
+</div>

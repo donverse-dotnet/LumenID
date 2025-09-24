@@ -1,0 +1,10 @@
+﻿# Editor config folders
+.vs/
+.vscode/
+.idea/
+
+# Env fils
+*.env
+
+# Unignore
+!*.gitkeep
