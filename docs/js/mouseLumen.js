@@ -1,5 +1,6 @@
 // Get element
 const lumenMouseEl = document.getElementById("util__lumen_mouse");
+const excludeTargetEl = document.getElementsByClassName("header")[0];
 
 // Mouse positions
 let targetX = window.innerWidth / 2;
@@ -15,7 +16,15 @@ window.addEventListener("mousemove", (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
 
-    lumenMouseEl.classList.remove("hidden");
+    let mouseEl = document.elementsFromPoint(mouseX, mouseY);
+    if (mouseEl.includes(excludeTargetEl))
+    {
+        lumenMouseEl.classList.add("hidden");
+    }
+    else
+    {
+        lumenMouseEl.classList.remove("hidden");
+    }
 }, {passive: true});
 window.addEventListener("mouseleave", () => lumenMouseEl.classList.add("hidden"));
 window.addEventListener("blur", () => lumenMouseEl.classList.add("hidden"));
